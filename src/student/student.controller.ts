@@ -1,4 +1,12 @@
-import { Controller, Get, Query, Request } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Query,
+  Request,
+} from '@nestjs/common';
 import { StudentService } from './student.service';
 
 @Controller('student')
@@ -6,18 +14,27 @@ export class StudentController {
   constructor(private readonly studentService: StudentService) {}
 
   @Get()
-  getStudent(
-    @Query() { id },
-    @Request() req,
-  ): {
-    students: { id: number; name: string; level: number }[];
-  } {
-    console.log(id);
+  getStudent(@Query() { id }, @Request() req) {
     return this.studentService.getStudent(req, id);
   }
 
   @Get('/:id')
   getStudentById(@Request() req) {
     return this.studentService.getStudentById(req);
+  }
+
+  @Post()
+  addStudent(@Request() req) {
+    return this.studentService.addStudent(req);
+  }
+
+  @Put('/:id')
+  editStudent(@Request() req) {
+    return this.studentService.editStudent(req);
+  }
+
+  @Delete('/:id')
+  deleteStudent(@Request() req) {
+    return this.studentService.deleteStudent(req);
   }
 }
