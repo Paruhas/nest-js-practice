@@ -101,7 +101,7 @@ export class StudentService {
     return { message: 'update studentData successful' };
   }
 
-  async deleteStudent(req) {
+  async deleteStudent(req, res) {
     const rawJsonStudents = await readFile('./students.json', 'utf8');
     const studentsData = JSON.parse(rawJsonStudents);
 
@@ -111,7 +111,7 @@ export class StudentService {
     });
     // console.log(findThisId);
     if (findThisId === -1) {
-      return { message: 'this studentId not found' };
+      return res.status(400).json({ message: 'this studentId not found' });
     }
 
     const newStudentData = studentsData.filter((item, index) => {

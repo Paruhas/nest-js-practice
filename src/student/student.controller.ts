@@ -6,6 +6,7 @@ import {
   Put,
   Query,
   Request,
+  Response,
 } from '@nestjs/common';
 import { StudentService } from './student.service';
 
@@ -34,7 +35,7 @@ export class StudentController {
   }
 
   @Delete('/:id')
-  deleteStudent(@Request() req) {
-    return this.studentService.deleteStudent(req);
+  deleteStudent(@Request() req, @Response() res) {
+    return this.studentService.deleteStudent(req, res);
   }
 }
