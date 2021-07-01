@@ -52,3 +52,6 @@ npm run start:debug > inspect ใน chrome แล้วจะเพิ่ม de
 1. เขียน module ก่อน แล้วค่อยทำ service และ controller
 
 - swagger คล้ายๆ Postman แต่เราไม่ต้องรู้ API path
+
+Module เหมือนกับ Route
+@Injectable เป็นการบอก Service Provider

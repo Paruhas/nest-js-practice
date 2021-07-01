@@ -27,7 +27,7 @@ export class StudentService {
     const studentsData = JSON.parse(rawJsonStudents);
     return {
       student: studentsData.filter((item, index) => {
-        return item.id === request.params.id;
+        return item.id === +request.params.id;
       }),
     };
   }
